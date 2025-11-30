@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>LAZO ($LAZO) – Official Meme Token</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #18181b 0, #020617 55%, #000 100%);
+      color: #f9fafb;
+      line-height: 1.6;
+    }
+    a { color: #38bdf8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 2rem 1.5rem 3rem;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 60%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background: radial-gradient(circle, rgba(251,191,36,0.16) 0, transparent 60%);
+      opacity: 0.9;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      max-width: 900px;
+      z-index: 1;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      background: rgba(15,23,42,0.85);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      margin-bottom: 1rem;
+    }
+    .pill-emoji { font-size: 1.1rem; }
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 3.6rem);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+    .ticker {
+      font-size: 1.2rem;
+      color: #e5e7eb;
+      margin-bottom: 1rem;
+    }
+    .tagline {
+      font-size: 1rem;
+      max-width: 620px;
+      margin: 0 auto 1.5rem;
+      color: #cbd5f5;
+    }
+    .hero-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.7rem;
+      margin-bottom: 1.6rem;
+    }
+    .badge {
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.55);
+      background: rgba(15,23,42,0.92);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 1.4rem;
+    }
+    .btn {
+      padding: 0.7rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      border: 1px solid transparent;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #22c55e, #facc15);
+      color: #0f172a;
+      border-color: rgba(250,250,250,0.1);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+    }
+    .btn-secondary {
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
+      border-color: rgba(148,163,184,0.65);
+    }
+    .mint-box {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
+      font-size: 0.8rem;
+      word-break: break-all;
+    }
+    .section {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+    .section h2 {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: #e5e7eb;
+      margin-bottom: 1rem;
+    }
+    .section p { color: #cbd5e1; font-size: 0.95rem; }
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    .card {
+      border-radius: 1rem;
+      border: 1px solid rgba(30,64,175,0.7);
+      background: radial-gradient(circle at top left, rgba(56,189,248,0.16), rgba(15,23,42,0.95));
+      padding: 1rem;
+      font-size: 0.9rem;
+    }
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: #f9fafb;
+    }
+    .tokenomics-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.25rem 0;
+      border-bottom: 1px dashed rgba(148,163,184,0.35);
+      font-size: 0.9rem;
+    }
+    .tokenomics-label { color: #e5e7eb; }
+    .tokenomics-value { color: #22c55e; font-weight: 600; }
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.8rem;
+      color: #6b7280;
+      border-top: 1px solid rgba(31,41,55,0.9);
+      background: #020617;
+    }
+    .small {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+    .highlight {
+      color: #facc15;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="pill">
+        <span class="pill-emoji">⚽</span>
+        <span>Official LAZO Meme Token on Solana</span>
+      </div>
+      <h1>LAZO</h1>
+      <div class="ticker">($LAZO)</div>
+      <p class="tagline">
+        The degen meme token powered by pure fútbol chaos, late-night charts and
+        last-minute comebacks. No roadmap to the moon – we <span class="highlight">counter-attack</span> there.
+      </p>
+
+      <div class="hero-badge-row">
+        <div class="badge">Fixed Supply • 1,000,000,000</div>
+        <div class="badge">Immutable Metadata</div>
+        <div class="badge">0% Tax</div>
+        <div class="badge">Deployed on Solana</div>
+      </div>
+
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="https://jup.ag/swap/SOL-6mW56YMK8pDXsF5Rb4Dg7wX2QX56oaoM36MmFXUeKU1e" target="_blank" rel="noopener">
+          🚀 Trade LAZO on Jupiter
+        </a>
+        <a class="btn btn-secondary" href="https://birdeye.so/token/6mW56YMK8pDXsF5Rb4Dg7wX2QX56oaoM36MmFXUeKU1e?chain=solana" target="_blank" rel="noopener">
+          📈 View Chart on BirdEye
+        </a>
+      </div>
+
+      <div class="mint-box">
+        <strong>Mint Address:</strong><br />
+        6mW56YMK8pDXsF5Rb4Dg7wX2QX56oaoM36MmFXUeKU1e
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <h2>What is LAZO?</h2>
+    <p>
+      LAZO is a meme token on Solana for the degens who yell at the TV during
+      penalties and at the chart during 1-minute candles. No fake promises, no
+      mystery “VC unlocks” — just a transparent launch, fixed supply and
+      community-driven chaos. If you understand <span class="highlight">“one more goal”</span> and
+      <span class="highlight">“one more entry”</span>, you’re already home.
+    </p>
+  </section>
+
+  <!-- TOKENOMICS -->
+  <section class="section">
+    <h2>Tokenomics</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3>Supply &amp; Distribution</h3>
+        <ul class="tokenomics-list">
+          <li>
+            <span class="tokenomics-label">Total Supply</span>
+            <span class="tokenomics-value">1,000,000,000</span>
+          </li>
+          <li>
+            <span class="tokenomics-label">Founder Wallet</span>
+            <span class="tokenomics-value">500,000,000</span>
+          </li>
+          <li>
+            <span class="tokenomics-label">Marketing Wallet</span>
+            <span class="tokenomics-value">300,000,000</span>
+          </li>
+          <li>
+            <span class="tokenomics-label">Team Wallet</span>
+            <span class="tokenomics-value">200,000,000</span>
+          </li>
+        </ul>
+        <p class="small">
+          Mint authority and freeze authority have been disabled. Supply is
+          permanently fixed — no hidden extra time.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Liquidity &amp; Trading</h3>
+        <p>
+          An initial LAZO–SOL pool is live on <strong>Meteora DLMM</strong> with
+          <strong>150,000 LAZO</strong> and <strong>0.07 SOL</strong> in
+          liquidity, inside a tight price range for early price discovery.
+        </p>
+        <p class="small">
+          As volume and community grow, liquidity will be expanded and more
+          markets may be added. This is a meme token — not financial advice.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LINKS -->
+  <section class="section">
+    <h2>Links</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Twitter</h3>
+        <p>
+          Follow the official LAZO account for updates, memes and match-day
+          charts.
+        </p>
+        <p class="small">
+          <a href="https://twitter.com" target="_blank" rel="noopener">
+            👉 Insert your LAZO Twitter link here
+          </a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Solscan</h3>
+        <p>Verify the contract, holders and on-chain history.</p>
+        <p class="small">
+          <a href="https://solscan.io/token/6mW56YMK8pDXsF5Rb4Dg7wX2QX56oaoM36MmFXUeKU1e" target="_blank" rel="noopener">
+            🔍 View on Solscan
+          </a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>BirdEye</h3>
+        <p>Watch the live chart, pools and recent trades.</p>
+        <p class="small">
+          <a href="https://birdeye.so/token/6mW56YMK8pDXsF5Rb4Dg7wX2QX56oaoM36MmFXUeKU1e?chain=solana" target="_blank" rel="noopener">
+            📈 View LAZO on BirdEye
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div>LAZO ($LAZO) • Built on Solana • Meme token, not financial advice.</div>
+    <div class="small">Always double-check the mint: 6mW56YMK8pDXsF5Rb4Dg7wX2QX56oaoM36MmFXUeKU1e</div>
+  </footer>
+</body>
+</html>
