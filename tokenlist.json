@@ -1,6 +1,7 @@
 {
   "name": "LAZO Community Token List",
-  "logoURI": "",
+  "logoURI": "https://lazotoken.github.io/lazo-website/lazo.png"
+,
   "tags": {
     "community": {
       "name": "Community Tokens",
@@ -15,7 +16,8 @@
       "symbol": "LAZO",
       "name": "LAZO",
       "decimals": 9,
-      "logoURI": "",
+      "logoURI": "https://lazotoken.github.io/lazo-website/lazo.png"
+,
       "tags": ["community"]
     }
   ]
